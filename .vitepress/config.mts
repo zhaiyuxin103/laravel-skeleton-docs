@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Laravel skeleton",
   description: "Laravel Application skeleton for YouTeacher Team.",
+  base: '/laravel-skeleton-docs/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
