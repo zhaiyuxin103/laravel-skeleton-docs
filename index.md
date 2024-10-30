@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "Laravel skeleton"
-  text: "Laravel Application skeleton for me."
-  tagline: "Laravel is the best choice for building modern, full-stack web applications."
+  name: 'Laravel skeleton'
+  text: 'Laravel Application skeleton for me.'
+  tagline: 'Laravel is the best choice for building modern, full-stack web applications.'
   actions:
     - theme: brand
       text: Markdown Examples
@@ -22,4 +22,3 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-

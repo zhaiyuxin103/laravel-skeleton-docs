@@ -20,6 +20,9 @@ importers:
       lint-staged:
         specifier: ^15.2.10
         version: 15.2.10
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
       vitepress:
         specifier: ^1.4.0
         version: 1.4.0(@algolia/client-search@4.24.0)(@types/node@22.8.4)(postcss@8.4.47)(search-insights@2.17.2)(typescript@5.6.3)
@@ -1084,6 +1087,11 @@ packages:
 
   preact@10.24.2:
     resolution: {integrity: sha512-1cSoF0aCC8uaARATfrlz4VCBqE8LwZwRfLgkxJOQwAlQt6ayTmi0D9OF7nXid1POI5SZidFuG9CnlXbDfLqY/Q==}
+
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
@@ -2399,6 +2407,8 @@ snapshots:
       source-map-js: 1.2.1
 
   preact@10.24.2: {}
+
+  prettier@3.3.3: {}
 
   property-information@6.5.0: {}
 
