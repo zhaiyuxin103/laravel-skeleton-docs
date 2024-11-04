@@ -8,8 +8,8 @@ hero:
   tagline: 'Laravel is the best choice for building modern, full-stack web applications.'
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get started
+      link: /installation
     - theme: alt
       text: API Examples
       link: /api-examples
