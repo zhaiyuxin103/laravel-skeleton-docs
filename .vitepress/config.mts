@@ -13,21 +13,20 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/': {
-        items: [
-          {
-            text: '入门指南',
-            items: [{ text: '安装', link: '/installation' }],
-          },
-        ],
-      },
-      '/markdown-examples': {
-        base: '/markdown-examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-        ],
-      },
+      '/': [
+        {
+          text: '前言',
+          items: [{ text: '贡献导引', link: '/contributing' }],
+        },
+        {
+          text: '入门指南',
+          items: [{ text: '安装', link: '/installation' }],
+        },
+      ],
+      '/markdown-examples': [
+        { text: 'Markdown Examples', link: '/markdown-examples' },
+        { text: 'Runtime API Examples', link: '/api-examples' },
+      ],
     },
 
     socialLinks: [
