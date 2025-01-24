@@ -137,6 +137,12 @@
    php artisan migrate
    ```
 
+4. 执行数据库填充
+
+   ```bash
+   php artisan db:seed
+   ```
+
 ## 前端资源安装
 
 1. 安装 pnpm
@@ -218,20 +224,13 @@
 
 ## 权限配置
 
-1. 注册一位用户
-2. 将 1 号用户的 `is_admin` 字段设置为 `true`，即可访问后台
+1. 生成所有权限
 
    ```bash
-   php artisan app:update-user-to-admin
+   php artisan shield:generate --option=permissions --al
    ```
 
-3. 安装权限系统
-
-   ```bash
-   php artisan shield:install --fresh
-   ```
-
-4. 将 1 号用户设为超级管理员
+2. 将 1 号用户设为超级管理员
 
    ```bash
    php artisan shield:super-admin
