@@ -95,6 +95,16 @@ composer format
 
 确保所有测试都通过，且没有代码风格问题。
 
+## 支持问题
+
+Laravel Skeleton 的 GitHub 问题追踪器并非用于提供 Laravel Skeleton 相关的帮助或支持。请使用以下渠道之一获取帮助：
+
+- [GitHub Discussions](https://github.com/zhaiyuxin103/laravel-skeleton/discussions)
+- [StackOverflow](https://stackoverflow.com/)
+- [Discord](https://discord.gg/JP2H5ZQM)
+- [Larachat](https://larachat.co/)
+- [IRC](https://web.libera.chat/?nick=artisan&channels=#laravel-skeleton)
+
 ## 文档贡献
 
 如果您想改进文档，请注意：
