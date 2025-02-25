@@ -22,6 +22,10 @@ export default defineConfig({
           text: '入门指南',
           items: [{ text: '安装', link: '/installation' }],
         },
+        {
+          text: '功能增强',
+          items: [{ text: 'Login Link', link: '/login-link' }],
+        },
       ],
       '/markdown-examples': [
         { text: 'Markdown Examples', link: '/markdown-examples' },

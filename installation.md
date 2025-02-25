@@ -45,18 +45,6 @@ cd laravel-skeleton
 请务必正确配置 `APP_URL`，这将影响路由生成和资源访问。
 :::
 
-::: tip 开发登录提示
-本项目集成了 [Laravel Login Link](https://github.com/spatie/laravel-login-link) 扩展包用于开发环境快速登录。如果您需要在本地开发环境中使用此功能，请在 `config/login-link.php` 中的 `allowed_hosts` 数组中添加您配置的域名：
-
-```php
-'allowed_hosts' => [
-    'localhost',
-    'laravel.test', // 添加您的本地开发域名
-],
-```
-
-:::
-
 ::: details 环境变量配置参考
 
 ```ini
