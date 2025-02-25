@@ -23,6 +23,10 @@ export default defineConfig({
           items: [{ text: '安装', link: '/installation' }],
         },
         {
+          text: '监控和调试',
+          items: [{ text: 'Log Viewer', link: '/log-viewer' }],
+        },
+        {
           text: '功能增强',
           items: [{ text: 'Login Link', link: '/login-link' }],
         },
