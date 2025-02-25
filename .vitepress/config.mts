@@ -24,7 +24,10 @@ export default defineConfig({
         },
         {
           text: '监控和调试',
-          items: [{ text: 'Log Viewer', link: '/log-viewer' }],
+          items: [
+            { text: 'Horizon Watcher', link: '/horizon-watcher' },
+            { text: 'Log Viewer', link: '/log-viewer' },
+          ],
         },
         {
           text: '功能增强',
