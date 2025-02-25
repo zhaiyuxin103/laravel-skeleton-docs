@@ -1,237 +1,296 @@
-本项目代码使用 PHP 框架 [Laravel 11](https://laravel.com/) 开发，本地开发环境使用 [Herd](https://herd.laravel.com/)。
+# 安装指南
 
-下文将在假定读者已经安装好了 [Herd](https://herd.laravel.com/) 的情况下进行说明。如果还未安装 [Herd](https://herd.laravel.com/)，请参考 [Herd](https://herd.laravel.com/) 官方文档进行安装。
+[Laravel Skeleton](https://github.com/zhaiyuxin103/laravel-skeleton) 是一个功能完备的 Laravel 项目骨架，集成了常用开发工具和最佳实践。本指南将帮助您快速搭建开发环境并开始使用。
 
-## 基础安装
+## 环境要求 {#requirements}
 
-1. 创建项目
+- PHP >= 8.3
+- Composer >= 2.0
+- Node.js >= 18.0
+- MySQL >= 8.0 / MariaDB >= 10.3
+- Redis >= 6.0
 
-   ```bash
-   composer create-project zhaiyuxin103/laravel-skeleton
-   ```
+::: tip 开发环境推荐
+我们推荐使用 [Laravel Herd](https://herd.laravel.com/) 作为本地开发环境，它提供了最佳的开发体验。如果您还未安装 Herd，请参考[官方文档](https://herd.laravel.com/docs)进行安装。
+:::
 
-2. 根据情况修改 `.env` 文件里的内容，如数据库连接、缓存、邮件设置等
+## 快速开始 {#quick-start}
 
-   :::tip
-   请确保 `.env` 文件里的 `APP_URL` 配置正确，否则可能会导致路由生成错误
+### 创建项目 {#create-project}
+
+使用 Composer 从模板创建新项目：
+
+```sh
+composer create-project zhaiyuxin103/laravel-skeleton
+```
+
+进入项目目录：
+
+```sh
+cd laravel-skeleton
+```
+
+::: tip 自动配置
+项目会自动执行以下操作：
+
+1. 复制环境配置文件（.env.example → .env）
+2. 生成应用密钥（APP_KEY）
    :::
 
-   ::: details `.env` 参考配置
+### 配置环境 {#configuration}
 
-   ```dotenv
-   APP_NAME=Laravel
-   APP_ENV=local
-   APP_KEY=base64:CwIXFZoR/22TRZMGU8n96Ar//mubrh2Kxa15UmkgPnE=
-   APP_DEBUG=true
-   APP_TIMEZONE=UTC
-   APP_URL=https://laravel.test
-   APP_HTTPS=true
+根据您的实际环境修改 `.env` 文件：
 
-   APP_LOCALE=ja
-   APP_FALLBACK_LOCALE=ja
-   APP_FAKER_LOCALE=ja_JP
+::: warning 重要提示
+请务必正确配置 `APP_URL`，这将影响路由生成和资源访问。
+:::
 
-   APP_MAINTENANCE_DRIVER=file
-   APP_MAINTENANCE_STORE=database
+::: tip 开发登录提示
+本项目集成了 [Laravel Login Link](https://github.com/spatie/laravel-login-link) 扩展包用于开发环境快速登录。如果您需要在本地开发环境中使用此功能，请在 `config/login-link.php` 中的 `allowed_hosts` 数组中添加您配置的域名：
 
-   API_RATE_LIMITS=60,1
-   API_SIGN_RATE_LIMITS=10,1
-   API_DOMAIN=
-   API_PREFIX=api
+```php
+'allowed_hosts' => [
+    'localhost',
+    'laravel.test', // 添加您的本地开发域名
+],
+```
 
-   ADMIN_DOMAIN=
-   ADMIN_PATH=admin
+:::
 
-   AUTH_VERIFICATION_CODE_TTL=5
+::: details 环境变量配置参考
 
-   BCRYPT_ROUNDS=12
+```ini
+# 基础配置
+APP_NAME=Laravel
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=https://laravel.test
+APP_HTTPS=true
 
-   LOG_CHANNEL=daily
-   LOG_STACK=single
-   LOG_DEPRECATIONS_CHANNEL=null
-   LOG_LEVEL=debug
-   LOG_DAILY_DAYS=14
-   LOG_QUERY=true
-   LOG_VIEWER_ENABLED=true
-   LOG_VIEWER_API_ONLY=false
-   LOG_VIEWER_API_STATEFUL_DOMAINS=
+# 区域设置
+APP_LOCALE=zh_CN
+APP_FALLBACK_LOCALE=zh_CN
+APP_FAKER_LOCALE=zh_CN
 
-   QUERY_LOG_SLOWER_THAN=0
-   QUERY_LOG_TRIGGER=false
-   QUERY_LOG_CHANNEL=stack
+# 数据库配置
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=password
 
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=laravel
-   DB_USERNAME=root
-   DB_PASSWORD=password
+# Redis 配置
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-   SESSION_DRIVER=redis
-   SESSION_LIFETIME=120
-   SESSION_ENCRYPT=false
-   SESSION_PATH=/
-   SESSION_DOMAIN=null
+# 队列配置
+QUEUE_CONNECTION=redis
 
-   BROADCAST_CONNECTION=log
-   FILESYSTEM_DISK=s3
-   QUEUE_CONNECTION=redis
+# Octane 配置
+OCTANE_SERVER=roadrunner
+OCTANE_HTTPS=true
+```
 
-   CACHE_STORE=redis
-   CACHE_PREFIX=
+:::
 
-   MEMCACHED_HOST=127.0.0.1
+### 初始化数据库 {#database-setup}
 
-   REDIS_CLIENT=phpredis
-   REDIS_HOST=127.0.0.1
-   REDIS_PASSWORD=null
-   REDIS_PORT=6379
+创建数据库表结构：
 
-   MAIL_MAILER=log
-   MAIL_HOST=127.0.0.1
-   MAIL_PORT=2525
-   MAIL_USERNAME=null
-   MAIL_PASSWORD=null
-   MAIL_ENCRYPTION=null
-   MAIL_FROM_ADDRESS="hello@example.com"
-   MAIL_FROM_NAME="${APP_NAME}"
+```sh
+php artisan migrate
+```
 
-   AWS_ACCESS_KEY_ID=
-   AWS_SECRET_ACCESS_KEY=
-   AWS_DEFAULT_REGION=us-east-1
-   AWS_BUCKET=
-   AWS_USE_PATH_STYLE_ENDPOINT=false
+填充初始测试数据：
 
-   VITE_APP_NAME="${APP_NAME}"
+```sh
+php artisan db:seed
+```
 
-   SCOUT_DRIVER=meilisearch
-   MEILISEARCH_HOST=http://meilisearch:7700
-   MEILISEARCH_NO_ANALYTICS=false
+### 前端资源 {#frontend-assets}
 
-   SCOUT_DRIVER=typesense
-   TYPESENSE_HOST=typesense
-   TYPESENSE_PORT=8108
-   TYPESENSE_PROTOCOL=http
-   TYPESENSE_API_KEY=xyz
+项目使用 PNPM 作为包管理器，提供更快的安装速度和更好的磁盘空间利用率。
 
-   WWWGROUP=1000
-   WWWUSER=1000
+全局安装 PNPM 包管理器：
 
-   TELESCOPE_ENABLED=false
+```sh
+npm install -g pnpm
+```
 
-   OCTANE_SERVER=roadrunner
-   OCTANE_HTTPS=true
+安装项目所需的 NPM 依赖包：
 
-   SENTRY_LARAVEL_DSN=https://example@user.ingest.us.sentry.io/1
-   # Specify a fixed sample rate
-   SENTRY_TRACES_SAMPLE_RATE=1.0
-   # Set a sampling rate for profiling - this is relative to traces_sample_rate
-   SENTRY_PROFILES_SAMPLE_RATE=1.0
-   ```
+```sh
+pnpm install
+```
 
-   :::
+启动开发服务器（支持热重载）：
 
-3. 执行数据库迁移
+```sh
+pnpm dev
+```
 
-   ```bash
-   php artisan migrate
-   ```
+构建生产环境的前端资源：
 
-4. 执行数据库填充
+```sh
+pnpm build
+```
 
-   ```bash
-   php artisan db:seed
-   ```
+## 开发环境配置 {#development-setup}
 
-## 前端资源安装
+### Herd 设置 {#herd-setup}
 
-1. 安装 pnpm
+将项目链接到 Herd 环境：
 
-   :::info
+```sh
+herd link
+```
 
-   - 项目使用 pnpm 管理前端依赖，请先确保已经安装了 pnpm
-   - 如未安装，参考 [Installation](https://pnpm.io/installation)
-     :::
+设置项目使用的 PHP 版本：
 
-2. 安装依赖
+```sh
+herd isolate 8.3
+```
 
-   ```bash
-   pnpm install
-   ```
+为项目启用 HTTPS 支持：
 
-3. 编译前端资源
+```sh
+herd secure
+```
 
-   :::tip
-   开发环境请使用 `pnpm run dev` 命令，以便在修改代码后自动编译
-   :::
+在浏览器中打开项目：
 
-   ```bash
-   pnpm run build
-   ```
+```sh
+herd open
+```
 
-## Herd 配置
+### Octane 服务 {#octane-service}
 
-1. 链接到域
+::: tip 性能提示
+我们使用 RoadRunner 作为 Octane 服务器，它提供了优秀的性能和稳定性。
+:::
 
-   ```bash
-   herd link
-   ```
+1. **安装配置**
 
-2. 指定 PHP 版本
+   安装并配置 Laravel Octane：
 
-   ```bash
-   herd isolate 8.3
-   ```
-
-3. 启用 HTTPS 支持
-
-   ```bash
-   herd secure
-   ```
-
-4. 在浏览器中打开应用
-
-   ```bash
-   herd open
-   ```
-
-## 配置加速引擎
-
-1. 安装 Octane
-
-   :::info
-   加速引擎请选择 roadrunner
-   :::
-
-   ```bash
+   ```sh
    php artisan octane:install
    ```
 
-2. 修改 Nginx 配置
+2. **配置 Nginx**
 
-   - 通过 Herd 的 Open configuration files 菜单打开配置文件目录
-   - 根据 [Serving Your Application via Nginx](https://laravel.com/docs/11.x/octane#serving-your-application-via-nginx) 官方文档修改 Nginx 配置文件
+   - 通过 Herd 菜单打开配置文件目录
+   - 参考 [Nginx 配置文档](https://laravel.com/docs/11.x/octane#serving-your-application-via-nginx)
 
-3. 启动应用
+3. **启动服务**
 
-   :::tip
-   开发环境下，请添加 `--watch` 选项，以便在修改代码后自动重启服务
-   :::
+   启动开发环境（支持代码更改自动重载）：
 
-   ```bash
+   ```sh
+   php artisan octane:start --watch
+   ```
+
+   启动生产环境服务：
+
+   ```sh
    php artisan octane:start
    ```
 
-## 权限配置
+### 权限系统 {#permissions}
 
-1. 生成所有权限
+生成所有权限配置：
 
-   ```bash
-   php artisan shield:generate --option=permissions --al
-   ```
+```sh
+php artisan shield:generate --option=permissions --all
+```
 
-2. 将 1 号用户设为超级管理员
+创建并设置超级管理员账号：
 
-   ```bash
-   php artisan shield:super-admin
-   ```
+```sh
+php artisan shield:super-admin
+```
+
+## 开发工具 {#development-tools}
+
+### IDE 支持 {#ide-support}
+
+生成 Laravel Facades 的 IDE 提示：
+
+```sh
+php artisan ide-helper:generate
+```
+
+生成数据库模型的 PHPDoc 注释：
+
+```sh
+composer ide-helper:models
+```
+
+生成 PHPStorm 的高级元数据：
+
+```sh
+php artisan ide-helper:meta
+```
+
+### 代码质量 {#code-quality}
+
+使用 Laravel Pint 修复代码风格：
+
+```sh
+composer format
+```
+
+运行 PHPStan 静态代码分析：
+
+```sh
+composer analyze
+```
+
+## 生产环境部署 {#production-deployment}
+
+部署到生产环境前，请执行以下优化：
+
+优化 Composer 自动加载器：
+
+```sh
+composer install --optimize-autoloader --no-dev
+```
+
+优化应用程序（缓存配置、事件、路由和视图）：
+
+```sh
+php artisan optimize
+```
+
+构建并优化前端资源：
+
+```sh
+pnpm build
+```
+
+## 常见问题 {#troubleshooting}
+
+### 权限问题 {#permission-issues}
+
+修复存储目录和缓存目录的权限：
+
+```sh
+chmod -R 775 storage bootstrap/cache
+```
+
+### 性能优化建议 {#performance-tips}
+
+1. 启用 Redis 缓存
+2. 使用 Octane 服务
+3. 优化数据库查询
+4. 配置队列处理
+
+## 参考资源 {#references}
+
+- [Laravel 文档](https://laravel.com/docs)
+- [Herd 文档](https://herd.laravel.com/docs)
+- [项目源码](https://github.com/zhaiyuxin103/laravel-skeleton)
+- [贡献指南](/contributing)
