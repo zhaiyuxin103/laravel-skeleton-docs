@@ -23,6 +23,10 @@ export default defineConfig({
           items: [{ text: '安装', link: '/installation' }],
         },
         {
+          text: '开发工具',
+          items: [{ text: 'Pint', link: '/pint' }],
+        },
+        {
           text: '监控和调试',
           items: [
             { text: 'Horizon Watcher', link: '/horizon-watcher' },
