@@ -24,7 +24,10 @@ export default defineConfig({
         },
         {
           text: '开发工具',
-          items: [{ text: 'Pint', link: '/pint' }],
+          items: [
+            { text: 'PHPStan', link: '/phpstan' },
+            { text: 'Pint', link: '/pint' },
+          ],
         },
         {
           text: '监控和调试',
