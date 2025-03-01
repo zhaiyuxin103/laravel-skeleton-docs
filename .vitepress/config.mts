@@ -1,10 +1,16 @@
 import { defineConfig } from 'vitepress';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Laravel skeleton',
   description: 'Laravel Application skeleton for YouTeacher Team.',
   base: '/laravel-skeleton-docs/',
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
