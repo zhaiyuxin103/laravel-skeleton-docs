@@ -41,6 +41,7 @@ export default defineConfig({
             { text: 'Horizon', link: '/horizon' },
             { text: 'Horizon Watcher', link: '/horizon-watcher' },
             { text: 'Log Viewer', link: '/log-viewer' },
+            { text: 'Pulse', link: '/pulse' },
           ],
         },
         {
