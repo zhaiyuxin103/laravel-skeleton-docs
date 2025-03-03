@@ -48,7 +48,10 @@ export default defineConfig({
         },
         {
           text: '功能增强',
-          items: [{ text: 'Login Link', link: '/login-link' }],
+          items: [
+            { text: 'Login Link', link: '/login-link' },
+            { text: 'Octane', link: '/octane' },
+          ],
         },
       ],
       '/markdown-examples': [
