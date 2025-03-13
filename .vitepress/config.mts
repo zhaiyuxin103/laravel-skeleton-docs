@@ -34,6 +34,7 @@ export default defineConfig({
             { text: 'IDE Helper', link: '/ide-helper' },
             { text: 'PHPStan', link: '/phpstan' },
             { text: 'Pint', link: '/pint' },
+            { text: 'Husky', link: '/husky' },
           ],
         },
         {
